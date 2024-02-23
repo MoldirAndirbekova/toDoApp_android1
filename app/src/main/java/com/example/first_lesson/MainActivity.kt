@@ -2,44 +2,27 @@ package com.example.first_lesson
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
-
-private const val TAG:String = "ActivityLifeCycle"
-
+import androidx.lifecycle.ViewModelProvider
+import com.example.first_lesson.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var taskViewModel: TaskViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        binding.newTaskButton.setOnClickListener{
+            NewTaskSheet().show(supportFragmentManager, "newTaskTag")
+        }
 
-        val textView = findViewById<TextView>(R.id.hello_world)
-        textView.text = "Hello from Kotlin"
-
-        Log.i(TAG, "MainActivity#onCreate")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG, "MainActivity#onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG, "MainActivity#onResume")
-    }
-
-    override fun onPause() {
-        Log.i(TAG, "MainActivity#onPause")
-        super.onPause()
-    }
-
-    override fun onStop() {
-        Log.i(TAG, "MainActivity#onStop")
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        Log.i(TAG, "MainActivity#onDestroy")
-        super.onDestroy()
+        taskViewModel.name.observe(this){
+            binding.taskName.text = String.format("Task Name: %s", it)
+        }
+        taskViewModel.desc.observe(this){
+            binding.taskDesc.text = String.format("Task Desc: %s", it)
+        }
     }
 }
