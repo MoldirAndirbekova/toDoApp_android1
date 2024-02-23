@@ -3,6 +3,7 @@ package com.example.first_lesson
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.first_lesson.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +18,18 @@ class MainActivity : AppCompatActivity() {
         binding.newTaskButton.setOnClickListener{
             NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
         }
+        setRecycleView()
 
 
+    }
+
+    private fun setRecycleView() {
+        var mainActivity = this
+        taskViewModel.taskItems.observe(this){
+            binding.todoListRecyclerView.apply {
+                layoutManager = LinearLayoutManager(applicationContext)
+                adapter = TaskItemAdapter(it)
+            }
+        }
     }
 }
