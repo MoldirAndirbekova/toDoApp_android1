@@ -23,8 +23,7 @@
             android:layout_marginHorizontal="15dp"
             android:src="@drawable/unchecked_24"
             android:backgroundTint="@android:color/transparent"
-            android:contentDescription="@string/checkbox"
-            ></ImageButton>
+            android:contentDescription="@string/checkbox" />
 
         <TextView
             android:layout_width="0dp"
