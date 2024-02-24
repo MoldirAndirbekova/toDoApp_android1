@@ -16,7 +16,7 @@ class TaskItemViewHolder(
     @RequiresApi(Build.VERSION_CODES.O)
     private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
     @RequiresApi(Build.VERSION_CODES.O)
-    fun bindTaskItem(taskItem: TaskItem) {
+    fun bindTaskItem(taskItem: TodoItem) {
         binding.name.text = taskItem.name
 
         if (taskItem.isCompleted()){

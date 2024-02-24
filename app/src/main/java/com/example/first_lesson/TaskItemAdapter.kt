@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.first_lesson.databinding.TaskItemCellBinding
 
 class TaskItemAdapter(
-    private val taskItems: List<TaskItem>,
+    private val taskItems: List<TodoItem>,
     private val clickListener: TaskitemClickListener
 ): RecyclerView.Adapter<TaskItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {

@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity(), TaskitemClickListener {
             NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
         }
         setRecycleView()
-
-
     }
 
     private fun setRecycleView() {
@@ -35,12 +33,12 @@ class MainActivity : AppCompatActivity(), TaskitemClickListener {
         }
     }
 
-    override fun editTaskItem(taskItem: TaskItem)
+    override fun editTaskItem(taskItem: TodoItem)
     {
         NewTaskSheet(taskItem).show(supportFragmentManager,"newTaskTag")
     }
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun completeTaskItem(taskItem: TaskItem)
+    override fun completeTaskItem(taskItem: TodoItem)
     {
         taskViewModel.setCompleted(taskItem)
     }

@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.first_lesson.databinding.FragmentNewTaskSheetBinding
 import java.time.LocalTime
 
-class NewTaskSheet(var taskItem: TaskItem?) : BottomSheetDialogFragment() {
+class NewTaskSheet(var taskItem: TodoItem?) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentNewTaskSheetBinding
     private lateinit var taskViewModel: TaskViewModel
@@ -78,7 +78,7 @@ class NewTaskSheet(var taskItem: TaskItem?) : BottomSheetDialogFragment() {
         val name = binding.name.text.toString()
         val desc = binding.taskDesc.text.toString()
         if (taskItem == null) {
-            val newTask = TaskItem(name, desc, dueTime, null)
+            val newTask = TodoItem(name, desc, dueTime, null)
             taskViewModel.addTaskItem(newTask)
         }
         else {

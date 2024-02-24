@@ -10,13 +10,13 @@ import java.util.UUID
 
 class TaskViewModel: ViewModel() {
 
-    var taskItems = MutableLiveData<MutableList<TaskItem>>()
+    var taskItems = MutableLiveData<MutableList<TodoItem>>()
 
     init {
         taskItems.value = mutableListOf()
     }
 
-    fun addTaskItem(newTaskItem: TaskItem) {
+    fun addTaskItem(newTaskItem: TodoItem) {
         var list = taskItems.value
         list!!.add(newTaskItem)
         taskItems.postValue(list)
@@ -32,7 +32,7 @@ class TaskViewModel: ViewModel() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun setCompleted(taskItem: TaskItem)
+    fun setCompleted(taskItem: TodoItem)
     {
         val list = taskItems.value
         val task = list!!.find { it.id == taskItem.id }!!
