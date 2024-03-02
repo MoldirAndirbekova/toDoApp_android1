@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.first_lesson.databinding.FragmentNewTaskSheetBinding
 import java.time.LocalTime
 
-class NewTaskSheet(var taskItem: TodoItem?) : BottomSheetDialogFragment() {
+class NewTaskSheet(var taskItem: TodoItem?) : DialogFragment() {
 
     private lateinit var binding: FragmentNewTaskSheetBinding
     private lateinit var taskViewModel: TaskViewModel
@@ -25,7 +25,7 @@ class NewTaskSheet(var taskItem: TodoItem?) : BottomSheetDialogFragment() {
         val activity = requireActivity()
 
         if (taskItem != null) {
-            binding.taskTitle.text = "Edit the task"
+//            binding.taskTitle.text = "Edit the task"
             val editable = Editable.Factory.getInstance()
             binding.name.text = editable.newEditable(taskItem!!.name)
             binding.taskDesc.text = editable.newEditable(taskItem!!.desc)
@@ -36,11 +36,14 @@ class NewTaskSheet(var taskItem: TodoItem?) : BottomSheetDialogFragment() {
             }
         }
         else {
-            binding.taskTitle.text = "Add a new task"
+//            binding.taskTitle.text = "Add a new task"
         }
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
         binding.saveButton.setOnClickListener{
             saveAction()
+        }
+        binding.deleteLayout.setOnClickListener{
+            deleteAction()
         }
         binding.timeKeeperButton.setOnClickListener {
             openTimePicker()
@@ -87,6 +90,18 @@ class NewTaskSheet(var taskItem: TodoItem?) : BottomSheetDialogFragment() {
         binding.name.setText("")
         binding.taskDesc.setText("")
         dismiss()
+    }
+
+    private fun deleteAction() {
+        if (taskItem != null) {
+            taskViewModel.deleteTaskItem(taskItem!!.id)
+        }
+        dismiss()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NORMAL, com.google.android.material.R.style.Widget_MaterialComponents_MaterialCalendar_Fullscreen)
     }
 
 

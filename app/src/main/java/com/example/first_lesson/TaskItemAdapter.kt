@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.first_lesson.databinding.TaskItemCellBinding
+import java.util.UUID
 
 class TaskItemAdapter(
     private val taskItems: List<TodoItem>,
@@ -22,6 +23,5 @@ class TaskItemAdapter(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
         holder.bindTaskItem(taskItems[position])
-
     }
 }

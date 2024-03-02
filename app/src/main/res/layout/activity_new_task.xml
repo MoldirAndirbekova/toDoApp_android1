@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewTaskSheet"
-    android:gravity="top"
+    tools:context=".NewTaskActivity"
+    android:orientation="vertical"
     android:background="@color/light_primary"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
+    >
     <ImageButton
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
@@ -22,35 +21,21 @@
         android:src="@drawable/close_icon" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/saveButton"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/saveButton"
+        android:text="Сохранить"
         app:iconPadding="0dp"
         android:padding="0dp"
         android:backgroundTint="@android:color/transparent"
-        android:textColor="@color/dark"
+        android:textColor="@color/blue"
         android:textSize="16sp"
         app:cornerRadius="0dp"
         android:elevation="0dp"
         android:textAppearance="?attr/textAppearanceButton"
         android:layout_gravity="end"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="-30dp"
-        >
-
-    </com.google.android.material.button.MaterialButton>
-
-
-<!--    <TextView-->
-<!--        android:id="@+id/taskTitle"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/new_task"-->
-<!--        android:textSize="30sp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        style="@style/TextAppearance.AppCompat.Title" />-->
+        android:layout_marginTop="-30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -62,59 +47,68 @@
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusBottomEnd="16dp"
-        app:hintEnabled="false">
+        app:cornerFamily="rounded">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:id="@+id/name"
-            android:hint="@string/name"
+            android:hint="Что надо сделать ...."
             android:gravity="top"
             android:background="@color/white">
         </com.google.android.material.textfield.TextInputEditText>
-        
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <TextView
+        android:id="@+id/textImportance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="20dp" >
+        android:layout_marginHorizontal="20dp"
+        android:text="Важность"
+        android:textAppearance="?android:textAppearanceMedium" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/taskDesc"
-            android:hint="@string/description" >
-        </com.google.android.material.textfield.TextInputEditText>
+    <View
+        android:id="@+id/dividerLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/textImportance"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сделать до"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
-
-    </TextView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/timeKeeperButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="20dp"
-        android:src="@drawable/blue_label"
-        android:backgroundTint="@color/dark"
-        android:layout_gravity="end"
-        android:layout_marginTop="-40dp"
-        android:text=""
+        android:text="@string/select_time"
+        android:backgroundTint="@color/design_default_color_primary">
 
-        >
+    </com.google.android.material.button.MaterialButton>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:textColor="@color/design_default_color_on_primary"
+        android:text="@string/save" >
 
     </com.google.android.material.button.MaterialButton>
 
@@ -125,8 +119,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp"
-        android:layout_marginBottom="15dp">
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/deleteIcon"
@@ -134,10 +127,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_delete_24"
             android:contentDescription="Удалить"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="1dp"/>
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <TextView
             android:layout_width="wrap_content"

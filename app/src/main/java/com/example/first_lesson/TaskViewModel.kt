@@ -40,4 +40,10 @@ class TaskViewModel: ViewModel() {
             task.completedDay = LocalDate.now()
         taskItems.postValue(list)
     }
+
+    fun deleteTaskItem(taskId: UUID) {
+        val list = taskItems.value ?: return
+        val newList = list.filter { it.id != taskId }
+        taskItems.postValue(newList.toMutableList())
+    }
 }

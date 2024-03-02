@@ -4,10 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="place_holder">Place Holder</string>
     <string name="checkbox">CheckBox</string>
-    <string name="new_task">New Task</string>
-    <string name="name">Name</string>
+    <string name="new_task">Новое дело</string>
+    <string name="name">Что надо сделать....</string>
     <string name="description">Description</string>
     <string name="save">Save</string>
-    <string name="select_time">Select time</string>
+    <string name="select_time">Сделать до</string>
     <string name="text_tasks">Мои дела</string>
+    <string name="saveButton">Сохранить</string>
 </resources>
